@@ -1,25 +1,14 @@
 import React,{Component} from 'react'
 import * as BooksAPI from './Common/BooksAPI';
 import Book from './Component/Book';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import DebounceInput from 'react-debounce-input';
+import {  Link } from 'react-router-dom'
 import SearchInput from './Component/SearchInput'
 export default class SearchForBook extends Component {
   state = {
     allResults: []
   }
 
-  renderResults(){
-    if (this.state.allResults != [])
-      return this.state.allResults.map(function(book, index){
-        return(<li key={book.id + index}>
-            <Book book={book} onShelfChange={this.props.onShelfChange}/>
-          </li>
 
-        );});
-
-
-  }
   searchFor (text) {
     const query = text.text.target.value;
     if (!query) {
@@ -39,7 +28,7 @@ export default class SearchForBook extends Component {
             return book;
           });
 
-          this.setState({allResults:allResults});
+          this.setState({allResults});;
         }
       });
   };

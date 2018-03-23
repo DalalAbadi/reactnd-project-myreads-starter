@@ -1,20 +1,18 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import DebounceInput from 'react-debounce-input';
 
-export default class SearchInput extends Component {
-  render () {
-    const {minLen, placeholderText,elementType} = this.props;
-    const {props} = this
+export default function  SearchInput (props){
+
     return (
       <DebounceInput
-        minLength={minLen}
-        element={elementType}
+        minLength={props.minLen}
+        element={props.elementType}
         type="text"
-        placeholder={placeholderText}
-        onChange={(text) =>this.props.onChange({text})} />
+        placeholder={props.placeholderText}
+        onChange={(text) =>props.onChange({text})} />
 
     )
-  }
+
 
 }

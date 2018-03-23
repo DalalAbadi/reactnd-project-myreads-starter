@@ -1,11 +1,6 @@
-import React,{Component} from 'react'
+import React from 'react'
 
-export default class Book extends Component{
-
-  componentWillMount(){}
-
-  render() {
-    const {shelf,title,authors,imageLinks} = this.props.book;
+export default function Book (props){
 
     return (
       <div className="book">
@@ -14,10 +9,11 @@ export default class Book extends Component{
             width: 128,
             height: 193,
             backgroundSize: 'cover',
-            backgroundImage: `url("${ imageLinks.thumbnail}")`,  }}/>
+            backgroundImage: `url("${props.book.imageLinks ? props.book.imageLinks.thumbnail : 'https://tsawaq.net/shop/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/n/o/no_cover_thumb.gif'
+              }")`,  }}/>
 
           <div className="book-shelf-changer">
-            <select onChange={this.ShelfUpdated} value={shelf}>
+            <select onChange={(result) => props.onShelfChange(props.book, result.target.value)} value={props.book.shelf}>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -26,20 +22,13 @@ export default class Book extends Component{
             </select>
           </div>
         </div>
-        <div className="book-title">{title}</div>
-        <div className="book-authors">{authors ? authors.join(", "):""}
+        <div className="book-title">{props.book.title}</div>
+        <div className="book-authors">{props.book.authors ? props.book.authors.join(", "):""}
         </div>
       </div>
     )
-  }
 
 
-
-  ShelfUpdated = (result) => {
-    console.log(result)
-    const shelf = result.target.value;
-    this.props.onShelfChange(this.props.book, shelf);
-  };
 
 
 

@@ -3,7 +3,7 @@ import SearchForBook from './SearchForBook'
 import './Common/App.css'
 import ListBooks from './Component/ListBooks'
 import * as BooksAPI from './Common/BooksAPI'
-import {Route} from 'react-router-dom'
+import {Route,BrowserRouter } from 'react-router-dom'
 
 
 export default class App extends Component {
@@ -37,6 +37,7 @@ export default class App extends Component {
 
     return (
       <div className="app">
+
         <Route
           path="/search"
           render={({history}) => (<SearchForBook
