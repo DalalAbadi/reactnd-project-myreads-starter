@@ -14,7 +14,7 @@ export default function Book (props){
 
           <div className="book-shelf-changer">
             <select onChange={(result) => props.onShelfChange(props.book, result.target.value)} value={props.book.shelf}>
-              <option value="none" disabled>Move to...</option>
+              <option value="empty" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
               <option value="read">Read</option>

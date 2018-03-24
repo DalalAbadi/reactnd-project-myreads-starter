@@ -16,8 +16,9 @@ export default class SearchForBook extends Component {
     }
     BooksAPI.search(query, 20)
       .then(allResults => {
-        if (!allResults ) {
+        if (allResults.error ) {
           this.setState({allResults: []});
+
         }else {
           allResults = allResults.map((book) => {
             const bookShelf = this
